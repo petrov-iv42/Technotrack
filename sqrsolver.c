@@ -12,10 +12,9 @@ enum {
 const double POISON = tan(M_PI/2);
 const double EPS = DBL_EPSILON;
 int SquareSolver(double a, double b, double c, double* x1, double* x2);
-int IsZero(double littleNum);
+inline int IsZero(double littleNum);
 
 //inline void func(); gcc -std.99
-//DOXIGEN
 
 int main() {
         printf("Hello, I'm square equilibration's solver.\n"
@@ -56,7 +55,7 @@ int SquareSolver(double a, double b, double c, double* x1, double* x2) {
         assert(x2 != NULL);
         assert(x1 != x2);
         if (IsZero(a)) {
-            if (IsZero(b + c)) { // CYKA BLYAT
+            if (IsZero(b + c)) {
                 return 3;
             }
             *x1 = 0-c/b;
@@ -72,11 +71,11 @@ int SquareSolver(double a, double b, double c, double* x1, double* x2) {
             }
             *x1 = (-b + sqrt(d))/(2*a);
             *x2 = (-b - sqrt(d))/(2*a);
-            return 2; // tabulyatsia poyehala
+            return 2;
         }
 }
 
-int IsZero(double littleNum) {
+inline int IsZero(double littleNum) {
         return fabs(littleNum) <= EPS;
 }
 
